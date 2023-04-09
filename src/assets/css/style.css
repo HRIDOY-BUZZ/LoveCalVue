@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+/* Header Starts */
+
+.head-div {
+    background: #F14668;
+    width: 100%;
+    height: 15vh;
+}
+
+.shade {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+    height: 100%;
+}
+
+.app-title p {
+    font-family: 'Pacifico', cursive;
+    font-size: 400%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.app-title span {
+    font-family: 'Monoton', cursive;
+    font-weight: 400;
+}
+
+
+/* Header Ends */
+
+
+/* Form Division Starts */
+.form-sec {
+    height: 60vh;
+}
+
+.form-div {
+    background: #F14668;
+    width: 100%;
+    height: 60vh;
+    padding: 50px;
+}
+
+.form-div label {
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    float: right;
+    font-family: 'Fredoka One', cursive;
+}
+
+.form-div .row {
+    margin: 30px 0px;
+}
+
+.form-div input[type=text] {
+    font-size: 27px;
+    font-weight: 400;
+    font-family: 'Fredoka One', cursive;
+}
+
+.form-div input[type=submit] {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Fredoka One', cursive;
+    background-image: linear-gradient(to top, #f14668de, #F14668, #f14668de);
+    color: white;
+    width: 70%;
+    border: 5px solid white;
+    border-radius: 35px;
+}
+
+.form-div input[type=submit]:hover {
+    background: white;
+    color: #F14668;
+    width: 70%;
+    border: 5px solid #F14668;
+    border-radius: 35px;
+    box-shadow: 0px 0px 20px 0px white;
+}
+
+
+/* Form Division Ends */
+
+.result {
+    font-size: 40px !important;
+}
+
+.errorMsg {
+    font-size: 12px;
+    color: red;
+    background: white;
+}
+
+
+/* Footer Starts */
+
+.footer-div {
+    background: #F14668;
+    width: 100%;
+    min-height: 25vh;
+}
+
+.shade-b {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+    height: 100%;
+}
+
+.copyright-text {
+    padding: 70px;
+}
+
+.copyright-text p {
+    text-align: center;
+    color: white;
+}
+
+.copyright-text a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Monoton', cursive;
+}
+
+
+/* Footer Ends */
