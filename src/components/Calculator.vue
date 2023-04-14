@@ -71,8 +71,7 @@
                 this.per = this.getPercentage(formData.name1, formData.name2);
                 this.msg = formData.name1+' Loves '+formData.name2+': '+this.per+'%';
             },
-            getPercentage(name1, name2)
-            {
+            getPercentage(name1, name2) {
                 let full = name1.toLowerCase()+" loves "+name2.toLowerCase();
                 let count = new Array(full.length);
                 let arr = full.split('');
@@ -94,7 +93,7 @@
                 // console.log(arr);
                 let cnt = Object.values(count);
                 let s = cnt.length;
-                // console.log(cnt);
+                console.log(cnt);
                 while(s>2) {
                     let temp = new Array();
                     let j = s-1;
@@ -110,32 +109,41 @@
                     cnt = Object.values(temp);
                     s = cnt.length;
                     temp = undefined;
-                    // console.log(cnt);
+                    console.log(cnt);
                 }
                 let result  = cnt.join("");
 
                 if(result.length > 2) {
-                    if(result.length == 3) {
-                        if(parseInt(result, 10) == 100)
-                            return result;
-                        else {
-                            let temp = new Array();
-                            temp[0] = parseInt(result[0])+parseInt(result[2]);
-                            temp[1] = parseInt(result[1]);
-                            result = temp.join("");
-                            return result;
-                        }
-                    }
-                    else if(result.length == 4) {
+                    result = this.resultFixing(result);
+                    if(result.length > 2) {
+                        result = this.resultFixing(result);
+                        return result;
+                    } else return result;
+
+                } else return result;
+            },
+            resultFixing(str) {
+                let result = str;
+                if(result.length == 3) {
+                    if(parseInt(result, 10) == 100)
+                        return result;
+                    else {
                         let temp = new Array();
-                        temp[0] = parseInt(result[0])+parseInt(result[3]);
-                        temp[1] = parseInt(result[1])+parseInt(result[2]);
+                        temp[0] = parseInt(result[0])+parseInt(result[2]);
+                        temp[1] = parseInt(result[1]);
                         result = temp.join("");
                         return result;
                     }
-
-                } else return result;
+                }
+                else if(result.length == 4) {
+                    let temp = new Array();
+                    temp[0] = parseInt(result[0])+parseInt(result[3]);
+                    temp[1] = parseInt(result[1])+parseInt(result[2]);
+                    result = temp.join("");
+                    return result;
+                }
             }
+
         }
     }
 </script>
