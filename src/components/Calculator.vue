@@ -34,7 +34,14 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label class="result">
+                                <label v-if="loading" class="result text-center">
+                                    <hollow-dots-spinner
+                                        :dot-size="15"
+                                        :dots-num="4"
+                                        color="#FFFFFF"
+                                    />
+                                </label>
+                                <label v-else class="result">
                                     {{ msg }}
                                 </label>
                             </div>
@@ -51,18 +58,25 @@
 
 <script>
     import { ref } from 'vue'
+    import axios from 'axios'
+    import { HollowDotsSpinner } from 'epic-spinners'
     export default {
+        components: {
+            HollowDotsSpinner
+        },
         data() {
             return {
                 name1: '',
                 name2: '',
+                loading: false,
 
                 msg: ref(''),
                 per: ref(0),
             }
         },
         methods: {
-            submitForm() {
+            async submitForm() {
+                this.loading = true;
                 const formData = {
                     name1: this.name1,
                     name2: this.name2,
@@ -70,6 +84,10 @@
 
                 this.per = this.getPercentage(formData.name1, formData.name2);
                 this.msg = formData.name1+' Loves '+formData.name2+': '+this.per+'%';
+
+                this.saveRecord(formData.name1, formData.name2, this.per);
+                await new Promise((r) => setTimeout(r, 2000));
+                this.loading = false
             },
             getPercentage(name1, name2) {
                 let full = name1.toLowerCase()+" loves "+name2.toLowerCase();
@@ -93,7 +111,7 @@
                 // console.log(arr);
                 let cnt = Object.values(count);
                 let s = cnt.length;
-                console.log(cnt);
+                // console.log(cnt);
                 while(s>2) {
                     let temp = new Array();
                     let j = s-1;
@@ -109,7 +127,7 @@
                     cnt = Object.values(temp);
                     s = cnt.length;
                     temp = undefined;
-                    console.log(cnt);
+                    // console.log(cnt);
                 }
                 let result  = cnt.join("");
 
@@ -142,8 +160,44 @@
                     result = temp.join("");
                     return result;
                 }
-            }
+            },
+            async saveRecord(name1, name2, per) {
+                const ip = await this.getUserData();
+                const data = {
+                    name_1: name1,
+                    name_2: name2,
+                    percent: per,
+                    ip,
+                }
+                try {
+                    const response = await fetch('https://api.hridoybuzz.me/loveCal/submit.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    console.log(JSON.stringify(data))
 
+                    if (response.ok) {
+                        const message = await response.text();
+                        console.log(message);
+                    } else {
+                        console.log('There was a problem submitting your message. Please try again.');
+                    }
+                } catch(error) {
+                    console.error(error)
+                }
+            },
+            async getUserData() {
+                try {
+                    const response = await axios.get('https://api.ipify.org?format=json');
+                    return response.data.ip;
+                } catch (error) {
+                    console.error(error);
+                    throw new Error('Failed to fetch IP address');
+                }
+            }
         }
     }
 </script>
