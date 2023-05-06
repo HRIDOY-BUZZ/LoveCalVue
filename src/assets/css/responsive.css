@@ -32,6 +32,9 @@
     .app-title p {
         font-size: 280%;
     }
+    .form-div {
+        min-height: 70vh;
+    }
     .copyright-text p {
         font-size: 80%;
     }
