@@ -39,22 +39,25 @@
         font-size: 80%;
     }
 }
-/*
+
 @media screen and (max-width: 576px) {
-    .app-title {
-        padding-top: 15px;
-    }
     .app-title p {
-        font-size: 260%;
+        font-size: 200%;
     }
-    .copyright-text p {
-        font-size: 80%;
+    .form-div label {
+        font-size: 20px;
     }
-    .copyright-text a {
-        font-size: 80%;
+    .form-div input[type="submit"] {
+        font-size: 20px;
+    }
+    .form-div input[type="text"] {
+        font-size: 20px;
+    }
+    .result {
+        font-size: 22px !important;
     }
 }
-
+/*
 @media screen and (max-width: 480px) {
     .app-title {
         padding-top: 15px;
@@ -69,3 +72,21 @@
         font-size: 70%;
     }
 } */
+
+@media screen and (max-width: 376px) {
+    .app-title p {
+        font-size: 160%;
+    }
+    .form-div label {
+        font-size: 15px;
+    }
+    .form-div input[type="submit"] {
+        font-size: 15px;
+    }
+    .form-div input[type="text"] {
+        font-size: 15px;
+    }
+    .result {
+        font-size: 20px !important;
+    }
+}
