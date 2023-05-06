@@ -32,8 +32,9 @@
     .app-title p {
         font-size: 280%;
     }
-    .form-div {
-        min-height: 70vh;
+    .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
     }
     .copyright-text p {
         font-size: 80%;
@@ -91,5 +92,23 @@
     }
     .result {
         font-size: 20px !important;
+    }
+}
+
+@media screen and (max-height: 1280px) {
+    .form-div {
+        min-height: 73vh;
+    }
+}
+
+@media screen and (max-height: 1100px) {
+    .form-div {
+        min-height: 70vh;
+    }
+}
+
+@media screen and (max-height: 840px) {
+    .form-div {
+        min-height: 63vh;
     }
 }
